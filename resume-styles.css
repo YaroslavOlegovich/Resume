@@ -1,0 +1,281 @@
+/* resume-styles.css */
+
+/* Общие стили для секций */
+.section {
+    margin-bottom: var(--padding-3); /* Отступ между секциями */
+    padding: var(--padding-4) 0; /* Внутренние отступы */
+    border-bottom: var(--border-size) var(--border); /* Разделитель между секциями */
+}
+
+.section:last-child {
+    border-bottom: none; /* Убрать рамку у последней секции */
+}
+
+/* Стили для описаний в секциях */
+.section .description {
+    margin-top: var(--padding-9);
+    font-size: var(--font-size-8); /* Размер для основного текста */
+    line-height: 1.6;
+    color: var(--text-2);
+    max-width: 800px; /* Ограничь ширину для лучшей читаемости */
+    margin-left: auto;
+    margin-right: auto; /* Центрирование текста */
+    text-align: center; /* Текст "О себе" будет по центру */
+}
+
+.section .description p + p {
+    margin-top: var(--padding-8); /* Отступ между абзацами */
+}
+
+/* Переопределение стилей для h1 и h2 в секциях */
+.section .name h1 {
+    font-size: var(--font-size-3); /* Меньше, чем основной H1 артиста */
+    letter-spacing: var(--letter-spacing-2);
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: var(--padding-5); /* Отступ после заголовка секции */
+}
+
+.section .name h2 {
+    font-size: var(--font-size-6); /* Меньше, чем H2 артиста, для подзаголовков внутри секций */
+    color: var(--text);
+    justify-content: center; /* Центрировать h2 в .name, если .city display: grid */
+}
+
+.section .name h2 span {
+    gap: var(--padding-9); /* Уменьшаем отступ для иконок */
+}
+
+/* Адаптация для элементов списка внутри секций (Опыт, Образование, Проекты) */
+.experience-list .city,
+.education-list .city,
+.portfolio-list .city {
+    display: grid; /* Каждый элемент списка будет гридом */
+    text-align: center; /* Выравнивание текста по центру */
+    justify-content: center; /* Центрирование содержимого по горизонтали */
+    align-items: center;
+    gap: var(--padding-10); /* Маленький отступ внутри элемента */
+    padding: var(--padding-5);
+    border: var(--border-size) var(--border); /* Рамка для каждого элемента */
+    border-radius: var(--border-radius-2);
+    background-color: rgba(255, 255, 255, 0.5); /* Немного белого фона */
+    backdrop-filter: blur(var(--blur)); /* Эффект размытия */
+    -webkit-backdrop-filter: blur(var(--blur));
+}
+
+.experience-list .city .name p,
+.education-list .city .name p,
+.portfolio-list .city .name p {
+    font-size: var(--font-size-9);
+    color: var(--text-3);
+    margin-top: var(--padding-10); /* Отступ для дат */
+}
+
+/* Стили для описаний проектов и опыта внутри списков */
+.experience-list .city .description,
+.portfolio-list .city .description {
+    text-align: left; /* Вернуть выравнивание по левому краю для списков */
+    margin-top: var(--padding-9);
+    font-size: var(--font-size-9);
+    color: var(--text-2);
+    max-width: none; /* Убрать ограничение ширины */
+}
+
+.experience-list .city .description ul,
+.portfolio-list .city .description ul {
+    list-style: none; /* Убрать стандартные маркеры списка */
+    padding-left: 0;
+}
+
+.experience-list .city .description li,
+.portfolio-list .city .description li {
+    position: relative;
+    padding-left: var(--padding-6); /* Отступ для кастомных маркеров */
+    margin-bottom: var(--padding-10);
+}
+
+.experience-list .city .description li::before,
+.portfolio-list .city .description li::before {
+    content: "•"; /* Кастомный маркер */
+    color: var(--accent); /* Цвет маркера */
+    position: absolute;
+    left: 0;
+}
+
+/* Стили для списка навыков и сертификатов (категорий) */
+.skills-list {
+    display: flex; /* Flexbox для расположения категорий навыков */
+    flex-wrap: wrap; /* Чтобы переносились на новую строку */
+    justify-content: center;
+    gap: var(--padding-4); /* Отступ между категориями */
+    margin-top: var(--padding-3);
+}
+
+.skill-category {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+    border: var(--border-size) var(--border);
+    border-radius: var(--border-radius-2);
+    padding: var(--padding-5);
+    text-align: center;
+    flex-basis: calc(33.333% - var(--padding-4) * 2 / 3); /* 3 колонки на больших экранах */
+    min-width: 250px; /* Минимальная ширина, чтобы не сжимались слишком сильно */
+    box-sizing: border-box; /* Учитывать padding и border в ширине */
+}
+
+.skill-category h2 {
+    font-size: var(--font-size-7);
+    color: var(--accent);
+    margin-bottom: var(--padding-9);
+}
+
+.skill-category p {
+    font-size: var(--font-size-8);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+/* Стили для контактов */
+.contact-list.city { /* Добавляем .city, чтобы использовать его стили flexbox */
+    display: flex;
+    flex-direction: column; /* Контакты будут в колонку */
+    align-items: center;
+    gap: var(--padding-8); /* Отступ между элементами контактов */
+    margin-top: var(--padding-3);
+}
+
+.contact-list .name h2 {
+    font-size: var(--font-size-6);
+    gap: var(--padding-9);
+}
+
+.contact-list .name h2 span {
+    color: var(--accent);
+    gap: var(--padding-9);
+}
+
+.contact-list .tickets {
+    margin-top: var(--padding-4);
+    justify-content: center; /* Центрировать иконки соцсетей */
+}
+
+/* Секция с изображениями сертификатов */
+.certificates-images-section {
+    padding-bottom: var(--padding-3); /* Отступ снизу */
+    border-bottom: none; /* Убрать рамку */
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Адаптивная сетка */
+    gap: var(--padding-3);
+    margin-top: var(--padding-3);
+    justify-items: center; /* Центрирование элементов в сетке */
+}
+
+.certificate-item {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: var(--border-size) var(--border);
+    border-radius: var(--border-radius-2);
+    padding: var(--padding-5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.certificate-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--border-radius-3); /* Немного скругления для самих изображений */
+}
+
+/* Дополнительные стили для футера */
+footer {
+    opacity: 1; /* Убрать анимацию loading, если она мешает. Или настроить. */
+    animation: none; /* Отключить анимацию, если она не нужна для футера */
+    padding: var(--padding-4) 0;
+    text-align: center;
+    border-top: var(--border-size) var(--border); /* Разделитель сверху */
+    margin-top: var(--padding-4);
+}
+
+footer p {
+    font-size: var(--font-size-9);
+    color: var(--text-3);
+    margin: 0;
+}
+
+/* Адаптация для мобильных устройств (можно переопределить здесь или в adaptation.css, если необходимо) */
+@media screen and (max-width: 1024px) {
+    .skill-category {
+        flex-basis: calc(50% - var(--padding-4) / 2); /* 2 колонки на средних экранах */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section .name h1 {
+        font-size: var(--font-size-4);
+    }
+
+    .section .description {
+        font-size: var(--font-size-9);
+        text-align: left; /* Можно вернуть по левому краю для мобильных, если удобнее */
+        padding: 0 var(--padding-4); /* Добавить горизонтальные отступы */
+    }
+
+    .experience-list .city,
+    .education-list .city,
+    .portfolio-list .city {
+        padding: var(--padding-4);
+    }
+
+    .skill-category {
+        flex-basis: 100%; /* 1 колонка на мобильных */
+        min-width: auto;
+    }
+
+    .experience-list .city .description,
+    .portfolio-list .city .description {
+        padding: 0; /* Убрать лишний padding */
+    }
+}
+/* resume-styles.css */
+
+/* Стили для логотипов проектов */
+.project-logo {
+    display: block; /* Сделать блочным элементом для контроля размеров и отступов */
+    width: 60px; /* Примерная ширина логотипа */
+    height: 60px; /* Примерная высота, сохраняем пропорции */
+    object-fit: contain; /* Чтобы изображение полностью вмещалось без обрезки */
+    margin: 0 auto var(--padding-9) auto; /* Центрировать и добавить отступ снизу */
+    border-radius: var(--border-radius-3); /* Небольшое скругление углов */
+    padding: var(--padding-10); /* Небольшой внутренний отступ, если логотип касается краев */
+    background-color: rgba(255, 255, 255, 0.7); /* Легкий фон, как у карточек */
+    border: var(--border-size) var(--border-2); /* Тонкая рамка */
+}
+
+/* Изменение flex-направления для .name, если логотип должен быть рядом с h2 */
+.portfolio-list .city .name {
+    display: flex; /* Делаем flex-контейнером */
+    flex-direction: column; /* Элементы будут выстраиваться в колонку */
+    align-items: center; /* Центрирование по горизонтали */
+    text-align: center; /* Выравнивание текста */
+    gap: var(--padding-10); /* Отступ между элементами внутри name */
+}
+
+.portfolio-list .city .name h2 {
+    margin-top: 0; /* Убрать лишний отступ сверху, если он был */
+    margin-bottom: 0; /* Убрать лишний отступ снизу */
+}
+
+/* Адаптация для мобильных устройств, если нужно уменьшить размер лого */
+@media screen and (max-width: 768px) {
+    .project-logo {
+        width: 48px;
+        height: 48px;
+    }
+}
